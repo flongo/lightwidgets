@@ -1,0 +1,11 @@
+resources:
+ '/':
+  - 'src'
+ '/test/':
+  - 'test'
+tests:
+ aria-templates:
+  bootstrap: http://cdn.ariatemplates.com/at1412.js?root=/
+  classpaths:
+   includes:
+    - test.PluginTestSuite
