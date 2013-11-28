@@ -17,7 +17,7 @@ To use it, there is a set a scripts that are available after the usual *npm inst
 
 A new widget library is defined [`LightWidgetLib`](./src/atplugins/lightWidgets/LightWidgetLib.js) which contains the following widgets:
  - `TextInput`: a text input based on the `html` textinput widget. It allows to register a listener to the `change` event in a cross-browser way.
- - `Autocomplete`: an autocomplete which allows to specify a resources handler and a template to print the list of suggestions, just like the standard `aria` autocomplete. [Configuration bean](./src/atplugins/lightWidgets/autocomplete/AutocompleteCfgBeans.js).
+ - `AutoComplete`: an autocomplete which allows to specify a resources handler and a template to print the list of suggestions, just like the standard `aria` autocomplete. [Configuration bean](./src/atplugins/lightWidgets/autocomplete/AutocompleteCfgBeans.js).
  - `DateField`: an input which is able to interpret the input string and turn it into a date (see [here](http://www.ariatemplates.com/usermanual/latest/datefield) for more information on the interpreter). [Configuration bean](./src/atplugins/lightWidgets/datefield/DateFieldCfgBeans.js).
  - `Calendar`: a simple calendar, very similar to the `aria` calendar, but skinless and simpler. [Configuration bean](./src/atplugins/lightWidgets/calendar/CalendarCfgBeans.js).
  - `DatePicker`: it combines the light `DateField` and `Calendar` widgets. [Configuration bean](./src/atplugins/lightWidgets/datepicker/DatePickerCfgBeans.js).

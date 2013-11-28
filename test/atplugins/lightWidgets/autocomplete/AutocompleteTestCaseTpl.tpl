@@ -24,7 +24,7 @@
     {macro main()}
       <div id="container" style="width: 200px;height: 200px;">
 
-        {@light:Autocomplete {
+        {@light:AutoComplete {
             id: "always",
             suggestionsTemplate: "atplugins.lightWidgets.autocomplete.AutocompleteTemplate",
             bind: {
@@ -42,7 +42,7 @@
             preselect: "always"
         } /}
 
-        {@light:Autocomplete {
+        {@light:AutoComplete {
             id: "none",
             suggestionsTemplate: "atplugins.lightWidgets.autocomplete.AutocompleteTemplate",
             bind: {
@@ -60,7 +60,7 @@
             preselect: "none"
         } /}
 
-        {@light:Autocomplete {
+        {@light:AutoComplete {
             id: "no_preselect",
             suggestionsTemplate: "atplugins.lightWidgets.autocomplete.AutocompleteTemplate",
             bind: {

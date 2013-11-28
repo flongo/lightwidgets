@@ -27,7 +27,7 @@
                 "TextInput" : basePath + "textinput.TextInputWithOnChange",
                 "DatePicker" : basePath + "datepicker.DatePicker",
                 "DateField" : basePath + "datefield.DateField",
-                "Autocomplete" : basePath + "autocomplete.Autocomplete",
+                "AutoComplete" : basePath + "autocomplete.Autocomplete",
                 "Calendar" : basePath + "calendar.Calendar"
             }
         }

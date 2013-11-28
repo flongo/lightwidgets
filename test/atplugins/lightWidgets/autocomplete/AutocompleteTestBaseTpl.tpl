@@ -23,7 +23,7 @@
 
     {macro main()}
 
-      {@light:Autocomplete {
+      {@light:AutoComplete {
           id: "autocomplete",
           suggestionsTemplate: "atplugins.lightWidgets.autocomplete.AutocompleteTemplate",
           bind: {
