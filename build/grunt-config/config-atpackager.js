@@ -31,11 +31,12 @@ module.exports = function (grunt) {
         atpackager : {
             build : {
                 options : {
-                    sourceDirectories : ["node_modules/ariatemplates/src", /* folder where the Aria Templates framework is located */
-                            "src" /* folder where the plugin is located */
+                    sourceDirectories : [
+                        "src"  /* folder where the plugin is located */
                     ],
                     outputDirectory : 'build/output',
                     ATBootstrapFile : 'aria/bootstrap.js',
+                    ATDirectories : ['node_modules/ariatemplates/src'], /* folder where the Aria Templates framework is located */
 
                     sourceFiles : atExtensions,
                     defaultBuilder : {
@@ -46,7 +47,7 @@ module.exports = function (grunt) {
                     },
                     packages : [{
                                 "name" : process.env.npm_package_name + ".js",
-                                "files" : [path + "/**/*", "!aria/**/*", "!README.md"]
+                                "files" : [path + "/**/*"]
                             }],
                     visitors : ['ATCompileTemplates', 'ATRemoveDoc', {
                                 type : 'JSMinify',
@@ -58,10 +59,7 @@ module.exports = function (grunt) {
                             }, {
                                 type : 'ATUrlMap',
                                 cfg : {
-                                    mapFile : process.env.npm_package_name + '.js',
-                                    sourceFiles : ['**/*'],
-                                    starCompress : ['*'],
-                                    starStarCompress : ['*']
+                                    mapFile : process.env.npm_package_name + '.js'
                                 }
                             }]
                 }
