@@ -5,7 +5,7 @@ resources:
   - 'test'
 tests:
  aria-templates:
-  bootstrap: http://cdn.ariatemplates.com/at1412.js?root=/
+  bootstrap: http://cdn.ariatemplates.com/at151.js?root=/
   classpaths:
    includes:
     - test.PluginTestSuite
