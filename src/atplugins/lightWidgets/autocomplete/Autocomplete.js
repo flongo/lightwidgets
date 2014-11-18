@@ -92,9 +92,16 @@
             /**
              * data model that is shared with the dropdown
              * @type Object
-             * @protected
              */
             this.data = {};
+
+            /**
+             * Whether the "input" event has already been handled. Needed only for the case in which there is a delete
+             * icon natively in every text field
+             * @type Boolean
+             * @protected
+             */
+            this._onInputAlreadyHandled = false;
 
             var data = this.data;
             if (cfg.preselect == "always") {
@@ -292,6 +299,7 @@
              * @protected
              */
             _onkeydown : function (evt) {
+                this._preventOnInput();
                 this._keyCode = evt.keyCode;
                 var keyCode = this._keyCode;
                 var domEvent = aria.DomEvent, jsonUtils = this._jsonUtils, data = this.data;
@@ -394,6 +402,7 @@
              * @protected
              */
             _onCutOrPaste : function (evt) {
+                this._preventOnInput();
                 if (evt.keyCode === 0) {
                     this._onkeydown({
                         keyCode : 0
@@ -405,6 +414,36 @@
                     });
 
                 }
+            },
+
+            /**
+             * "input" event handler. When the user clicks on the native delete icon that can be present in text fields,
+             * the data model is accordingly updated
+             * @protected
+             */
+            _onInput : function (evt) {
+                if (!this._onInputAlreadyHandled) {
+                    this._jsonUtils.setValue(this.data, "selectedIdx", -1);
+                    this._jsonUtils.setValue(this.data, "highlightedIdx", -1);
+                    this._reportValueToDataModel();
+                    this._buffer = "";
+                }
+            },
+
+            /**
+             * Set a flag to true prevent the "_onInput" method to reset the data model. Set a timer to set the flag
+             * back to false
+             * @protected
+             */
+            _preventOnInput : function () {
+                this._onInputAlreadyHandled = true;
+                aria.core.Timer.addCallback({
+                    fn : function () {
+                        this._onInputAlreadyHandled = false;
+                    },
+                    scope : this,
+                    delay : 20
+                });
             },
 
             /**
@@ -469,8 +508,8 @@
                 this.$TextInputWithOnChange._registerListeners.call(this, cfg);
                 var listeners = cfg.on;
 
-                var events = ["keydown", "paste", "cut", "type"];
-                var handlers = ["_onkeydown", "_onCutOrPaste", "_onCutOrPaste", "_ontype"];
+                var events = ["keydown", "paste", "cut", "type", "input"];
+                var handlers = ["_onkeydown", "_onCutOrPaste", "_onCutOrPaste", "_ontype", "_onInput"];
                 for (var i = 0, length = events.length; i < length; i++) {
                     var event = events[i];
 
